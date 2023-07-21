@@ -1,6 +1,9 @@
 import './globals.css'
+import styles from './layout.module.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+
+import Header from '../components/Header'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,7 +19,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <div className="sm:bg-neutral-lightest min-h-screen flex flex-col">
+          <Header />
+          <main
+            className={`flex flex-1 px-4 py-5 sm:bg-essencial-white sm:py-10 sm:px-7 ${styles.main}`}>
+            {children}
+          </main>
+        </div>
+      </body>
     </html>
   )
 }
